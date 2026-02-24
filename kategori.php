@@ -31,7 +31,7 @@
                     <!-- Hanya bisa di buka oleh admin -->
                     <?php  if($_SESSION['user']['level'] !='peminjam') : ?>
                     <td>
-                        <a href="?page=kategori_tambah&&id=<?= $data['id_kategori'];?>" class="btn btn-sm btn-info">Ubah</a>
+                        <a href="?page=kategori_ubah&&id=<?= $data['id_kategori'];?>" class="btn btn-sm btn-info">Ubah</a>
                         <a href="?page=kategori_hapus&&id=<?= $data['id_kategori']; ?>" class="btn btn-sm btn-danger">Hapus</a>
                     </td>
                 </tr>

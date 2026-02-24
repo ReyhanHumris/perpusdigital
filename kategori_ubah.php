@@ -5,18 +5,19 @@
         <div class="card-body">
             <form action="" method="post">
                 <?php
+                $id = $_GET['id'];
                 if(isset($_POST['submit'])) {
                     $kategori = strtolower($_POST['kategori']);
                     // Cek apakah kategori sudah ada
                     $cek = mysqli_query($koneksi, "SELECT * FROM kategori WHERE Lower(kategori)='$kategori'");
                     $check = mysqli_num_rows($cek);
                     if($check > 0) {
-                        echo '<script> alert("Kategori sudah ada"); </script>';
+                        echo '<script> alert("data yang dimasukan sama"); </script>';
                         return false;
                     } else{
-                        $query = mysqli_query($koneksi, "INSERT INTO kategori VALUES (NULL, '$kategori')");
+                        $query = mysqli_query($koneksi, "UPDATE kategori SET kategori='$kategori' WHERE id_kategori=$id");
                             if($query) {
-                                echo '<script> alert("Data berhasil disimpan");
+                                echo '<script> alert("Ubah Data berhasil disimpan");
                                 location.href="?page=kategori";</script>';  
                             } else {
                                 echo '<script> alert("Data gagal disimpan"); </script>';   

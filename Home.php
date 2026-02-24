@@ -1,3 +1,14 @@
+<div class="conteiner text-left">
+    <div class="row">
+        <div class="col-l-4 bg-primary text-white p-4 mb-4 rounded w-100 shadow">
+            <h1 class="h3 mb-4 text-white" style="color:white !important;"><b>Hallo <?= $_SESSION['user']['nama']; ?>, Selamat Datang di Dashboard Perpustakaan Digital</b></h1>
+            <p class="text-white">Anda login sebagai <?= $_SESSION['user']['level']; ?></p>
+        </div>
+    </div>
+</div>                   
+                   
+                   
+                   
                    <div class="row">
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -93,7 +104,7 @@
                 <td width="200"><?=  $_SESSION['user']['level']; ?></td>
             </tr>
             <tr>
-                <td width="150"><strong>Nama</strong></td>
+                <td width="150"><strong>Tanggal</strong></td>
                 <td width="1">:</td>
                 <td><?= date('d-m-y'); ?></td>
             </tr>
