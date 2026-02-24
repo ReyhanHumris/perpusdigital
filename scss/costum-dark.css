@@ -1,0 +1,16 @@
+/* Sidebar gelap modern */
+.sidebar {
+  background-color: #181824 !important; /* Contoh warna hitam pekat */
+  background-image: none !important; /* Hapus gradien bawaan */
+}
+
+/* Navbar gelap modern */
+.navbar-dark {
+    background-color: #212529 !important; /* Warna sedikit berbeda untuk kontras */
+}
+
+/* Teks dan ikon agar terlihat jelas di latar belakang gelap */
+.sidebar .nav-item .nav-link,
+.navbar-dark .navbar-nav .nav-link {
+    color: #f8f9fc !important; /* Warna teks tera
+    ng */ }

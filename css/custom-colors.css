@@ -1,0 +1,212 @@
+/* Tema dashboard E-Perpus - sidebar gelap, konten terang */
+
+:root {
+  --primary: #007bff;
+  --blue: #007bff;
+}
+
+/* Sidebar - dark charcoal solid (seperti E-Perpus) */
+.bg-gradient-primary.sidebar,
+#accordionSidebar.sidebar {
+  background-color: #212529 !important;
+  background-image: none !important;
+}
+
+/* Sidebar - item aktif */
+.sidebar-dark .nav-item.active .nav-link {
+  background-color: #2d3237 !important;
+  color: #fff !important;
+}
+.sidebar-dark .nav-item .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Topbar gelap sama seperti sidebar (#212529) - teks terang agar terlihat */
+.topbar-dark,
+.topbar.navbar-dark {
+  background-color: #212529 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.topbar .nav-link,
+.topbar .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.topbar .nav-link:hover {
+  color: #fff !important;
+}
+.topbar .nav-link i {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.topbar .small,
+.topbar .text-white {
+  color: #fff !important;
+}
+/* Hamburger icon (mobile) */
+.topbar #sidebarToggleTop,
+.topbar #sidebarToggleTop i {
+  color: #fff !important;
+}
+/* Search di topbar - input gelap, teks terang */
+.topbar .navbar-search .input-group {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.35rem;
+}
+.topbar .topbar-search-input,
+.topbar .navbar-search .form-control {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.topbar .topbar-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.topbar .navbar-search .btn-primary {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+.topbar .navbar-search .btn-primary:hover {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  color: #fff !important;
+}
+/* Dropdown dari topbar - isi tetap terang agar teks terbaca */
+.topbar .dropdown-menu {
+  background-color: #fff !important;
+}
+.topbar .dropdown-menu .dropdown-item,
+.topbar .dropdown-menu .dropdown-header,
+.topbar .dropdown-menu .small {
+  color: #000 !important;
+}
+.topbar .dropdown-menu .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+/* Badge counter di topbar */
+.topbar .badge-counter {
+  background-color: #dc3545 !important;
+  color: #fff !important;
+}
+
+/* Content area - background terang, teks hitam */
+#content-wrapper {
+  background-color: #f8f9fc !important;
+  color: #000 !important;
+}
+#content-wrapper #content .container-fluid {
+  background-color: #f8f9fc;
+  color: #000 !important;
+}
+
+/* Card / main content panel putih - teks hitam */
+.card,
+.card-body {
+  background-color: #fff;
+  color: #000 !important;
+}
+
+/* Semua tulisan di area konten hitam (bukan abu-abu) */
+#content-wrapper h1,
+#content-wrapper h2,
+#content-wrapper h3,
+#content-wrapper h4,
+#content-wrapper h5,
+#content-wrapper h6,
+#content-wrapper .text-gray-800,
+#content-wrapper .text-gray-600,
+#content-wrapper .text-gray-500,
+#content-wrapper .text-gray-900,
+#content-wrapper label,
+#content-wrapper .form-label,
+#content-wrapper .font-weight-bold.text-gray-800,
+#content-wrapper .small,
+#content-wrapper .dropdown-item,
+#content-wrapper table,
+#content-wrapper .table {
+  color: #000 !important;
+}
+#content-wrapper .form-control {
+  color: #000 !important;
+  border-color: #ced4da;
+}
+#content-wrapper .form-control::placeholder {
+  color: #6c757d;
+}
+
+/* Tombol Primary - biru (Simpan) */
+.btn-primary {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+  color: #fff !important;
+}
+.btn-primary:hover {
+  background-color: #0069d9 !important;
+  border-color: #0062cc !important;
+  color: #fff !important;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5) !important;
+}
+
+/* Tombol Secondary - abu (Reset) */
+.btn-secondary {
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+  color: #fff !important;
+}
+.btn-secondary:hover {
+  background-color: #5a6268 !important;
+  border-color: #545b62 !important;
+  color: #fff !important;
+}
+
+/* Tombol Danger - merah (Kembali) */
+.btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: #fff !important;
+}
+.btn-danger:hover {
+  background-color: #c82333 !important;
+  border-color: #bd2130 !important;
+  color: #fff !important;
+}
+
+/* Icon circle & badge primary */
+.bg-primary,
+.icon-circle.bg-primary,
+.badge-primary {
+  background-color: #007bff !important;
+}
+
+.text-primary,
+a.text-primary:hover {
+  color: #007bff !important;
+}
+
+.border-left-primary {
+  border-left-color: #007bff !important;
+}
+
+.progress-bar.bg-primary {
+  background-color: #007bff !important;
+}
+
+/* Search button di topbar */
+.topbar .btn-primary {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+
+/* Footer */
+.sticky-footer.bg-white {
+  background-color: #fff !important;
+}
+
+/* Sidebar - teks "Logged in as" */
+.sidebar .text-white-50 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+.sidebar .text-white-50 strong {
+  color: #fff;
+}
