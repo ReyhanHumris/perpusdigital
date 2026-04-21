@@ -18,14 +18,14 @@
     <?php endif;?>
 
     <!-- Card Container -->
-    <div class="card kategori-card shadow-sm border-0 animate-fade animate-delay-2">
+    <div class="card kategori-card shadow-sm border-0 animate-fade animate-de2lay-">
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover mb-0" id="datatable" width="100%" cellspacing="0">
-                    <thead class="bg-gradient-primary text-white">
+                <table class="table table-bordered table-striped  mb-0" id="datatable" width="100%" cellspacing="0">
+                    <thead class=" text-black">
                         <tr>
                             <th class="text-center" style="width: 60px;">NO</th>
-                            <th><i class="fas fa-folder mr-2"></i>Nama Kategori</th>
+                            <th>Nama Kategori</th>
                             <?php if($_SESSION['user']['level'] !='peminjam') : ?>
                                 <th class="text-center" style="width: 150px;"><i class="fas fa-cogs mr-2"></i>Aksi</th>
                             <?php endif;?>
@@ -35,21 +35,11 @@
                         <?php 
                             $query = mysqli_query($koneksi, "SELECT * FROM kategori");
                             $no = 1;
-                            $badge_classes = ['badge-blue', 'badge-green', 'badge-red', 'badge-yellow', 'badge-pink', 'badge-cyan'];
-                            $icons = ['fa-book', 'fa-star', 'fa-heart', 'fa-lightbulb', 'fa-rocket', 'fa-magic'];
                             while($data = mysqli_fetch_array($query)):
-                                $badge_idx = ($no - 1) % count($badge_classes);
-                                $icon_idx = ($no - 1) % count($icons);
                         ?>
                         <tr>
                             <td class="text-center font-weight-bold text-muted"><?php echo $no++; ?></td>
-                            <td>
-                                <span class="badge-category <?php echo $badge_classes[$badge_idx]; ?>">
-                                    <i class="fas <?php echo $icons[$icon_idx]; ?>"></i>
-                                    <?php echo ucfirst($data['kategori']); ?>
-                                </span>
-                            </td>
-
+                            <td><?= $data['kategori']; ?></td>
                             <!-- Hanya bisa di buka oleh admin -->
                             <?php if($_SESSION['user']['level'] !='peminjam') : ?>
                             <td class="text-center">

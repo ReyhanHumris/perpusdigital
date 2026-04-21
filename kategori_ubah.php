@@ -1,8 +1,8 @@
 <div class="w-100">
     <?php
         $id = $_GET['id'];
-        $query_lama = mysqli_query($koneksi, "SELECT * FROM kategori WHERE id_kategori=$id");
-        $data_lama = mysqli_fetch_assoc($query_lama);
+        $query = mysqli_query($koneksi, "SELECT * FROM kategori WHERE id_kategori=$id");
+        $data_lama = mysqli_fetch_assoc($query);
 
         if(isset($_POST['submit'])) {
             $kategori = strtolower($_POST['kategori']);
@@ -44,7 +44,7 @@
                             <span class="input-group-text"><i class="fas fa-folder"></i></span>
                         </div>
                         <input type="text" name="kategori" id="kategori" class="form-control" 
-                               value="<?php echo $data_lama['kategori']; ?>" 
+                               value="<?= $data_lama['kategori']; ?>" 
                                placeholder="Masukkan nama kategori" required>
                     </div>
                     <small class="text-muted">Contoh: Novel, Komik, Ensiklopedia, dll</small>
