@@ -1,36 +1,30 @@
-<style>
-    .form-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .form-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15) !important;
-    }
-    .input-group-text {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        color: white;
-        border: none;
-    }
-    .form-control:focus {
-        border-color: #6366f1;
-        box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
-    }
-    .btn {
-        transition: all 0.3s ease;
-    }
-    .btn:hover {
-        transform: translateY(-2px);
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade {
-        animation: fadeIn 0.4s ease forwards;
-    }
-</style>
-
 <div class="w-100">
+    <?php
+        $id = $_GET['id'];
+        $query_lama = mysqli_query($koneksi, "SELECT * FROM kategori WHERE id_kategori=$id");
+        $data_lama = mysqli_fetch_assoc($query_lama);
+
+        if(isset($_POST['submit'])) {
+            $kategori = strtolower($_POST['kategori']);
+            
+            // Cek apakah kategori sudah ada (kecuali dirinya sendiri)
+            $cek = mysqli_query($koneksi, "SELECT * FROM kategori WHERE kategori='$kategori' AND id_kategori != $id");
+            $check = mysqli_num_rows($cek);
+
+            if($check > 0) {
+                echo '<script> alert("Nama kategori tersebut sudah ada!"); </script>';
+            } else {
+                $query = mysqli_query($koneksi, "UPDATE kategori SET kategori='$kategori' WHERE id_kategori=$id");
+                if($query) {
+                    echo '<script> alert("Ubah Data berhasil disimpan");
+                    location.href="?page=kategori";</script>';  
+                } else {
+                    echo '<script> alert("Data gagal disimpan"); </script>';    
+                }
+            }
+        }
+    ?>
+
     <div class="mb-4 animate-fade">
         <h2 class="mb-1 text-gray-800 font-weight-bold">
             <i class="fas fa-edit text-primary mr-2"></i>Ubah Kategori Buku
@@ -41,28 +35,6 @@
     <div class="card form-card shadow-sm border-0 animate-fade">
         <div class="card-body">
             <form action="" method="post">
-                <?php
-                $id = $_GET['id'];
-                if(isset($_POST['submit'])) {
-                    $kategori = strtolower($_POST['kategori']);
-                    // Cek apakah kategori sudah ada
-                    $cek = mysqli_query($koneksi, "SELECT * FROM kategori WHERE Lower(kategori)='$kategori'");
-                    $check = mysqli_num_rows($cek);
-                    if($check > 0) {
-                        echo '<script> alert("data yang dimasukan sama"); </script>';
-                        return false;
-                    } else{
-                        $query = mysqli_query($koneksi, "UPDATE kategori SET kategori='$kategori' WHERE id_kategori=$id");
-                            if($query) {
-                                echo '<script> alert("Ubah Data berhasil disimpan");
-                                location.href="?page=kategori";</script>';  
-                            } else {
-                                echo '<script> alert("Data gagal disimpan"); </script>';   
-                            }
-                    }
-                }
-                ?> 
-                <!-- form -->
                 <div class="form-group mb-4">
                     <label for="kategori" class="font-weight-bold text-gray-800 mb-2">
                         <i class="fas fa-tag text-primary mr-1"></i> Nama Kategori
@@ -71,7 +43,9 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-folder"></i></span>
                         </div>
-                        <input type="text" name="kategori" id="kategori" class="form-control" placeholder="Masukkan nama kategori" required>
+                        <input type="text" name="kategori" id="kategori" class="form-control" 
+                               value="<?php echo $data_lama['kategori']; ?>" 
+                               placeholder="Masukkan nama kategori" required>
                     </div>
                     <small class="text-muted">Contoh: Novel, Komik, Ensiklopedia, dll</small>
                 </div>
@@ -79,10 +53,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary" name="submit" value="submit">
-                            <i class="fas fa-save mr-2"></i>Simpan
-                        </button>
-                        <button type="reset" class="btn btn-secondary">
-                            <i class="fas fa-undo mr-2"></i>Reset
+                            <i class="fas fa-save mr-2"></i>Simpan Perubahan
                         </button>
                         <a href="?page=kategori" class="btn btn-danger">
                             <i class="fas fa-arrow-left mr-2"></i>Kembali

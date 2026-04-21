@@ -1,35 +1,3 @@
-<style>
-    .form-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .form-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15) !important;
-    }
-    .input-group-text {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        color: white;
-        border: none;
-    }
-    .form-control:focus {
-        border-color: #6366f1;
-        box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
-    }
-    .btn {
-        transition: all 0.3s ease;
-    }
-    .btn:hover {
-        transform: translateY(-2px);
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade {
-        animation: fadeIn 0.4s ease forwards;
-    }
-</style>
-
 <div class="w-100">
     <div class="mb-4 animate-fade">
         <h2 class="mb-1 text-gray-800 font-weight-bold">
