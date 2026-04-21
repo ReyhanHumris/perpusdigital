@@ -1,8 +1,12 @@
 <div class="w-100">
-    <h2 class="mb-2 text-gray-800">Daftar Buku</h2>
+            <h2 class="mb-1 text-gray-800 font-weight-bold">
+                <i class="fas fa-folder-open text-primary mr-2"></i>Daftar Buku
+            </h2>
+            <p class="text-muted mb-0 small">Kelola daftar buku perpustakaan digital</p>
            
     <?php  if($_SESSION['user']['level'] !='peminjam') : ?>
-        <div class="mb-3">
+        <div class="mb-3 pt-2 animate-fade animate-delay-1">
+             
             <a href="?page=buku_tambah" class="btn btn-primary">Tambah Data</a>
         </div>   
      <?php endif;?>
