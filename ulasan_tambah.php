@@ -43,15 +43,15 @@
             <form action="" method="post">
                 <?php
                 if(isset($_POST['submit'])) {
-                    $kategori = strtolower($_POST['kategori']);
+                    $ulasan = strtolower($_POST['ulasan']);
                     // Cek apakah kategori sudah ada
-                    $cek = mysqli_query($koneksi, "SELECT * FROM kategori WHERE Lower(kategori)='$kategori'");
+                    $cek = mysqli_query($koneksi, "SELECT * FROM ulasan WHERE Lower(ulasan)='$ulasan'");
                     $check = mysqli_num_rows($cek);
                     if($check > 0) {
                         echo '<script> alert("Kategori sudah ada"); </script>';
                         return false;
                     } else{
-                        $query = mysqli_query($koneksi, "INSERT INTO kategori VALUES (NULL, '$kategori')");
+                        $query = mysqli_query($koneksi, "INSERT INTO ulasan VALUES (NULL, '$ulasan')");
                             if($query) {
                                 echo '<script> alert("Data berhasil disimpan");
                                 location.href="?page=kategori";</script>';  
@@ -83,7 +83,7 @@
                         <button type="reset" class="btn btn-secondary">
                             <i class="fas fa-undo mr-2"></i>Reset
                         </button>
-                        <a href="?page=kategori" class="btn btn-danger">
+                        <a href="?page=ulasan" class="btn btn-danger">
                             <i class="fas fa-arrow-left mr-2"></i>Kembali
                         </a>
                     </div>

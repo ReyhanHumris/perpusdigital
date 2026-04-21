@@ -1,5 +1,3 @@
-
-
 <div class="w-100">
     <div class="d-flex justify-content-between align-items-center mb-4 animate-fade">
         <div>
@@ -12,8 +10,8 @@
            
     <?php if($_SESSION['user']['level'] !='peminjam') : ?>
         <div class="mb-3 animate-fade animate-delay-1">
-            <a href="?page=kategori_tambah" class="btn btn-primary btn-rounded shadow">
-                <i class="fas fa-plus-circle mr-2"></i>Tambah Data
+            <a href="?page=ulasan_tambah" class="btn btn-primary btn-rounded shadow">
+                <i class="fas fa-plus-circle mr-2"></i>Tambah Ulasan
             </a>
         </div>   
     <?php endif;?>
@@ -25,8 +23,8 @@
                 <table class="table table-bordered table-striped table-hover mb-0" id="datatable" width="100%" cellspacing="0">
                     <thead class="bg-gradient-primary text-white">
                         <tr>
-                            <th class="text-center" style="width: 60px;">NO</th>
-                            <th><i class="fas fa-folder mr-2"></i>Nama Kategori</th>
+                            <th class="text-center" style="width: 60px;">ID_Ulasan</th>
+                            <th><i class="fas fa-folder mr-2"></i>Ulasan</th>
                             <?php if($_SESSION['user']['level'] !='peminjam') : ?>
                                 <th class="text-center" style="width: 150px;"><i class="fas fa-cogs mr-2"></i>Aksi</th>
                             <?php endif;?>
@@ -34,7 +32,7 @@
                     </thead>
                     <tbody>
                         <?php 
-                            $query = mysqli_query($koneksi, "SELECT * FROM kategori");
+                            $query = mysqli_query($koneksi, "SELECT * FROM ulasan");
                             $no = 1;
                             $badge_classes = ['badge-blue', 'badge-green', 'badge-red', 'badge-yellow', 'badge-pink', 'badge-cyan'];
                             $icons = ['fa-book', 'fa-star', 'fa-heart', 'fa-lightbulb', 'fa-rocket', 'fa-magic'];
@@ -47,7 +45,7 @@
                             <td>
                                 <span class="badge-category <?php echo $badge_classes[$badge_idx]; ?>">
                                     <i class="fas <?php echo $icons[$icon_idx]; ?>"></i>
-                                    <?php echo ucfirst($data['kategori']); ?>
+                                    <?php echo ucfirst($data['ulasan']); ?>
                                 </span>
                             </td>
 
