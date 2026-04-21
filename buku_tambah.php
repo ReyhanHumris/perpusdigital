@@ -15,29 +15,34 @@
                         $jumlah = $_POST['jumlah'];
                         $isbn = $_POST['isbn'];
                         
-                        // Handling Upload Gambar
+                        // Logika Unggah Gambar
                         $gambar = $_FILES['gambar']['name'];
                         $tmp = $_FILES['gambar']['tmp_name'];
-                        move_uploaded_file($tmp, 'assets/img/'.$gambar);
+                        
+                        // Pastikan gambar dipindah ke folder assets/img/
+                        if(!empty($gambar)) {
+                            move_uploaded_file($tmp, 'assets/img/' . $gambar);
+                        }
 
+                        // Query Simpan Data
                         $query = mysqli_query($koneksi, "INSERT INTO buku(id_kategori, judul, penulis, penerbit, tahun_terbit, sinopsis, jumlah, isbn, gambar) 
                                  VALUES('$id_kategori','$judul','$penulis','$penerbit','$tahun_terbit','$sinopsis','$jumlah','$isbn','$gambar')");
 
                         if($query) {
                             echo '<script>alert("Tambah data berhasil."); location.href="?page=buku";</script>';
                         } else {
-                            echo '<script>alert("Tambah data gagal.");</script>';
+                            echo '<script>alert("Tambah data gagal: ' . mysqli_error($koneksi) . '");</script>';
                         }
                     }
                 ?>
 
                 <div class="row g-3">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label fw-bold">Judul Buku</label>
-                        <input type="text" class="form-control shadow-none" name="judul" required>
+                        <label class="form-label fw-bold text-gray-700">Judul Buku</label>
+                        <input type="text" class="form-control shadow-none" name="judul" required placeholder="Masukkan judul buku">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label fw-bold">Kategori</label>
+                        <label class="form-label fw-bold text-gray-700">Kategori</label>
                         <select name="id_kategori" class="form-select shadow-none" required>
                             <option value="" disabled selected>Pilih Kategori</option>
                             <?php
@@ -52,43 +57,46 @@
 
                 <div class="row g-3">
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">Penulis</label>
-                        <input type="text" class="form-control shadow-none" name="penulis" required>
+                        <label class="form-label fw-bold text-gray-700">Penulis</label>
+                        <input type="text" class="form-control shadow-none" name="penulis" required placeholder="Nama penulis">
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">Penerbit</label>
-                        <input type="text" class="form-control shadow-none" name="penerbit" required>
+                        <label class="form-label fw-bold text-gray-700">Penerbit</label>
+                        <input type="text" class="form-control shadow-none" name="penerbit" required placeholder="Nama penerbit">
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">Tahun Terbit</label>
-                        <input type="number" class="form-control shadow-none" name="tahun_terbit" required>
+                        <label class="form-label fw-bold text-gray-700">Tahun Terbit</label>
+                        <input type="number" class="form-control shadow-none" name="tahun_terbit" required placeholder="Contoh: 2024">
                     </div>
                 </div>
 
                 <div class="row g-3">
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">Jumlah</label>
-                        <input type="number" class="form-control shadow-none" name="jumlah" required>
+                        <label class="form-label fw-bold text-gray-700">Jumlah Stok</label>
+                        <input type="number" class="form-control shadow-none" name="jumlah" required placeholder="0">
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">ISBN</label>
-                        <input type="text" class="form-control shadow-none" name="isbn">
+                        <label class="form-label fw-bold text-gray-700">ISBN</label>
+                        <input type="text" class="form-control shadow-none" name="isbn" placeholder="Kode ISBN">
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">Gambar</label>
-                        <input type="file" class="form-control shadow-none" name="gambar">
+                        <label class="form-label fw-bold text-gray-700">Cover Buku (Gambar)</label>
+                        <input type="file" class="form-control shadow-none" name="gambar" accept="image/*">
+                        <small class="text-muted">Format: jpg, png, jpeg</small>
                     </div>
                 </div>
 
                 <div class="mb-4">
-                    <label class="form-label fw-bold">Sinopsis</label>
-                    <textarea name="sinopsis" class="form-control shadow-none" rows="4"></textarea>
+                    <label class="form-label fw-bold text-gray-700">Sinopsis</label>
+                    <textarea name="sinopsis" class="form-control shadow-none" rows="4" placeholder="Tuliskan ringkasan buku..."></textarea>
                 </div>
 
                 <div class="d-flex gap-2">
-                    <button type="submit" name="submit" class="btn btn-primary px-4 fw-bold">Simpan</button>
-                    <button type="reset" class="btn btn-secondary px-4 fw-bold">Reset</button>
-                    <a href="?page=buku" class="btn btn-danger px-4 fw-bold">Kembali</a>
+                    <button type="submit" name="submit" class="btn btn-primary px-4 fw-bold shadow-sm">
+                        Simpan Data
+                    </button>
+                    <button type="reset" class="btn btn-secondary px-4 fw-bold shadow-sm">Reset</button>
+                    <a href="?page=buku" class="btn btn-danger px-4 fw-bold shadow-sm">Kembali</a>
                 </div>
             </form>
         </div>

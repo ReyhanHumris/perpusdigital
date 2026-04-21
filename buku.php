@@ -1,17 +1,13 @@
 <div class="w-100">
-            <h2 class="mb-1 text-gray-800 font-weight-bold">
-                <i class="fas fa-folder-open text-primary mr-2"></i>Daftar Buku
-            </h2>
-            <p class="text-muted mb-0 small">Kelola daftar buku perpustakaan digital</p>
+    <h2 class="mb-2 text-gray-800">Daftar Buku</h2>
            
-    <?php  if($_SESSION['user']['level'] !='peminjam') : ?>
-        <div class="mb-3 pt-2 animate-fade animate-delay-1">
-             
+    <?php if($_SESSION['user']['level'] !='peminjam') : ?>
+        <div class="mb-3">
             <a href="?page=buku_tambah" class="btn btn-primary">Tambah Data</a>
         </div>   
-     <?php endif;?>
+    <?php endif;?>
 
-     <div class="card shadow-sm border-0 mb-4">
+    <div class="card shadow-sm border-0 mb-4">
         <div class="card-body bg-white rounded">
             <form action="" method="get" class="row g-3">
                 <input type="hidden" name="page" value="buku">
@@ -31,23 +27,24 @@
         </div>
     </div>
 
-    <!-- table kategori -->
     <div class="clearfix">
-        <table class="table table-bordered" id="datatable" width = "100%" cellspasing>
+        <table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
             <thead>
-                <th>No.</th>
-                <th>Judul</th>
-                <th>Nama Kategori</th>
-                <th>Gambar</th>
-                <th>Penulis</th>
-                <th>Penerbit</th>
-                <th>Tahun Terbit</th>
-                <th>Sinopis</th>
-                <th>Jumlah</th>
-                <th>ISBN</th>
-            <?php  if($_SESSION['user']['level'] !='peminjam') : ?>
-                <th>Aksi</th>
-            <?php endif;?>
+                <tr>
+                    <th>No.</th>
+                    <th>Judul</th>
+                    <th>Nama Kategori</th>
+                    <th>Gambar</th>
+                    <th>Penulis</th>
+                    <th>Penerbit</th>
+                    <th>Tahun Terbit</th>
+                    <th>Sinopsis</th>
+                    <th>Jumlah</th>
+                    <th>ISBN</th>
+                    <?php if($_SESSION['user']['level'] !='peminjam') : ?>
+                        <th>Aksi</th>
+                    <?php endif;?>
+                </tr>
             </thead>
             <tbody>
                 <?php 
@@ -61,7 +58,13 @@
                     <td><?=$no++; ?></td>
                     <td><?= $data['judul']; ?></td>
                     <td><?= $data['nama_kategori'] ?></td>
-                     <td><img src="assets/img/<?= $data['gambar']; ?>" alt="<?= $data['judul']; ?>" width="100px"></td>
+                    <td class="text-center">
+                        <?php if(!empty($data['gambar'])): ?>
+                            <img src="assets/img/<?= $data['gambar']; ?>" alt="<?= $data['judul']; ?>" width="100px">
+                        <?php else: ?>
+                            <span class="text-muted small">No Image</span>
+                        <?php endif; ?>
+                    </td>
                     <td><?= $data['penulis'] ?></td>
                     <td><?= $data['penerbit'] ?></td>
                     <td><?= $data['tahun_terbit'] ?></td>
@@ -69,20 +72,19 @@
                     <td><?= $data['jumlah'] ?></td>
                     <td><?= $data['isbn'] ?></td>
 
-                    <!-- Hanya bisa di buka oleh admin -->
-                    <?php  if($_SESSION['user']['level'] !='peminjam') : ?>
+                    <?php if($_SESSION['user']['level'] !='peminjam') : ?>
                     <td>
-                        <a href="?page=buku_detail&&id=<?= $data['id_buku'];?>" class="btn btn-sm btn-primary">Detail</a>
-                        <a href="?page=buku_ubah&&id=<?= $data['id_buku'];?>" class="btn btn-sm btn-info">Ubah</a>
-                        <a href="?page=buku_hapus&&id=<?= $data['id_buku']; ?>" class="btn btn-sm btn-danger btn-action" title="Hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
-                            Hapus
-                        </a>
+                        <div class="d-flex gap-1">
+                            <a href="?page=buku_detail&&id=<?= $data['id_buku'];?>" class="btn btn-sm btn-primary">Detail</a>
+                            <a href="?page=buku_ubah&&id=<?= $data['id_buku'];?>" class="btn btn-sm btn-info text-white">Ubah</a>
+                            <a href="?page=buku_hapus&&id=<?= $data['id_buku']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
+                                Hapus
+                            </a>
+                        </div>
                     </td>
                     <?php endif;?>
                 </tr>
-                <?php
-                endwhile;
-                ?>
+                <?php endwhile; ?>
             </tbody>
         </table>
     </div>
